@@ -1,0 +1,6 @@
+@AppiMinistros_HostAddress = http://localhost:5103
+
+GET {{AppiMinistros_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
