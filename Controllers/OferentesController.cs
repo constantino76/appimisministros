@@ -30,14 +30,20 @@ namespace AppiMinistros.Controllers
 
         // GET: api/Oferentes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Oferente>> GetOferente(string id)
-        {
-            var oferente = await _context.TbOferente.FindAsync(id);
+        public async Task<ActionResult<Oferente>> GetOferente(String id)
+
+        // en este caso quitar el await 
+        {  //Oferente oferente = await _context.TbOferente.Include(e=>e.list_Experiencia_laboral).Include(e=>e.titulos).Where(e=>e.OferenteId==id).Single();
+
+            Oferente oferente =  _context.TbOferente.Include(e => e.list_Experiencia_laboral).Include(e => e.titulos).Where(e => e.OferenteId == id).Single();
+
+
 
             if (oferente == null)
             {
                 return NotFound();
             }
+           
 
             return oferente;
         }
@@ -47,15 +53,45 @@ namespace AppiMinistros.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOferente(string id, Oferente oferente)
         {
-            if (id != oferente.OferenteId)
+            var OferenteUpdate = _context.TbOferente.Include(e => e.list_Experiencia_laboral).Include(e => e.titulos).FirstOrDefault(e => e.OferenteId== id);
+            
+            
+            
+            if (OferenteUpdate == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(oferente).State = EntityState.Modified;
+       
 
             try
             {
+                //Actualizando datos del oferente
+                OferenteUpdate.Telefono = oferente.Telefono;
+                OferenteUpdate.Nombre = oferente.Nombre;
+                OferenteUpdate.Telefono = oferente.Telefono;
+                OferenteUpdate.Email = oferente.Email;
+                OferenteUpdate.FechaNacimiento = oferente.FechaNacimiento;
+                OferenteUpdate.Puesto = oferente.Puesto;
+
+
+                //limpiamos la lista de titulos  de la base de datos;
+                OferenteUpdate.titulos.Clear();
+                OferenteUpdate.list_Experiencia_laboral.Clear();
+
+                //Actualizar datos de los titulos 
+                foreach (var n in oferente.titulos) {
+                    OferenteUpdate.titulos.Add(n);
+                
+                }
+                //Actualizar los datos de los atestados academicos
+
+                foreach (var n in oferente.list_Experiencia_laboral)
+                {
+                    OferenteUpdate.list_Experiencia_laboral.Add(n);
+
+                }
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

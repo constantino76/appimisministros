@@ -250,3 +250,4 @@ C:\proyectosweb\AppiMinistros\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft
 C:\proyectosweb\AppiMinistros\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\proyectosweb\AppiMinistros\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\proyectosweb\AppiMinistros\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\proyectosweb\AppiMinistros\obj\Debug\net8.0\AppiMinistros.sourcelink.json
