@@ -1,0 +1,1 @@
+Este proyecto    se ha desarrollado la implementacion de la weppappi  con distintos controladores para realizar las operaciones crud que el cliente  que solicite el cliente del lado de la aplicacion  Misministros   solicite 
