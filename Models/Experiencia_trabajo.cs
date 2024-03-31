@@ -14,9 +14,9 @@ namespace AppiMinistros.Models
 
         public String Nombre_Empresa { get; set; }
         [Required(ErrorMessage = "Campo requerido")]
-        [Range(1900, 2022)]
+        [Range(1900, 2024)]
         public int Anio_inicio { get; set; }
-        [Range(1900, 2022)]
+        [Range(1900, 2024)]
         [Required(ErrorMessage = "Campo requerido")]
         public int Anio_fin { get; set; }
         [RegularExpression("^(0\\d{1}-\\d{4}-\\d{4})$")]
