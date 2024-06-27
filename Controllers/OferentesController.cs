@@ -41,7 +41,7 @@ namespace AppiMinistros.Controllers
 
             if (oferente == null)
             {
-                return NotFound();
+                return null;
             }
            
 
@@ -66,31 +66,36 @@ namespace AppiMinistros.Controllers
 
             try
             {
+
                 //Actualizando datos del oferente
-                OferenteUpdate.Telefono = oferente.Telefono;
-                OferenteUpdate.Nombre = oferente.Nombre;
-                OferenteUpdate.Telefono = oferente.Telefono;
-                OferenteUpdate.Email = oferente.Email;
-                OferenteUpdate.FechaNacimiento = oferente.FechaNacimiento;
-                OferenteUpdate.Puesto = oferente.Puesto;
+                //OferenteUpdate.Telefono = oferente.Telefono;
+                //OferenteUpdate.Nombre = oferente.Nombre;
+                //OferenteUpdate.Telefono = oferente.Telefono;
+                //OferenteUpdate.Email = oferente.Email;
+                //OferenteUpdate.FechaNacimiento = oferente.FechaNacimiento;
+                //OferenteUpdate.Puesto = oferente.Puesto;
 
 
                 //limpiamos la lista de titulos  de la base de datos;
                 OferenteUpdate.titulos.Clear();
                 OferenteUpdate.list_Experiencia_laboral.Clear();
 
-                //Actualizar datos de los titulos 
-                foreach (var n in oferente.titulos) {
-                    OferenteUpdate.titulos.Add(n);
+
+                OferenteUpdate.titulos = oferente.titulos;
+                OferenteUpdate.list_Experiencia_laboral = oferente.list_Experiencia_laboral;
+
+                ////Actualizar datos de los titulos 
+                //foreach (var n in oferente.titulos) {
+                //    OferenteUpdate.titulos.Add(n);
                 
-                }
-                //Actualizar los datos de los atestados academicos
+                //}
+                ////Actualizar los datos de los atestados academicos
 
-                foreach (var n in oferente.list_Experiencia_laboral)
-                {
-                    OferenteUpdate.list_Experiencia_laboral.Add(n);
+                //foreach (var n in oferente.list_Experiencia_laboral)
+                //{
+                //    OferenteUpdate.list_Experiencia_laboral.Add(n);
 
-                }
+                //}
 
                 await _context.SaveChangesAsync();
             }
